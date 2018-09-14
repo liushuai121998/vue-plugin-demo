@@ -1,23 +1,22 @@
-import Vue from "vue";
-import App from "./App.vue";
-import { createRouter } from "./router";
-import { createStore } from "./store";
+import Vue from 'vue'
+import App from './App.vue'
+import { createRouter } from './router'
+import { createStore } from './store'
 
-Vue.config.productionTip = false;
+// 引入插件
+import vpay from './lib/vpay'
+// 使用插件
+Vue.use(vpay)
 
-// new Vue({
-//   router,
-//   store,
-//   render: h => h(App)
-// }).$mount('#app')
+Vue.config.productionTip = false
 
-export function createApp() {
-  const router = createRouter();
+export function createApp () {
+  const router = createRouter()
   const store = createStore()
   const app = new Vue({
     router,
     store,
     render: h => h(App)
-  });
-  return { app, router };
+  })
+  return { app, router, store }
 }
